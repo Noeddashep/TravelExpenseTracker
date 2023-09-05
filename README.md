@@ -1,5 +1,7 @@
 # TravelExpenseTracker
-TravelExpenseTracker is a Python app for managing travel expenses. Track your daily spending in categories like meals, transportation and accommodation. You will have the opportunity to correct any errors and it will inform you if you stick to your budget.
+TravelExpenseTracker is a Python app for managing travel expenses. Using this app you'll be able to: 
+- Track your daily spending in categories like meals, transportation and accommodation.
+- To have the opportunity to correct any errors and it will inform you if you stick to your budget.
 # Main features
 - Acquisition of travel information: the application asks the user to enter the number of travel days and the total budget available for the trip, managing possible user input errors.
 - Recording Daily Expenses: using a for loop, the application asks the user to enter daily expenses in various categories, including meals, transportation, and accommodation.
