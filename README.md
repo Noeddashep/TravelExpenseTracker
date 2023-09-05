@@ -7,7 +7,7 @@ TravelExpenseTracker is a Python app for managing travel expenses. Using this ap
 - Recording Daily Expenses: using a for loop, the application asks the user to enter daily expenses in various categories, including meals, transportation, and accommodation.
 - Error Handling: using a Try Except statement, the application handles input errors and allows users to correct them.
 - Display of Total Expenses: at the end of the trip, the application calculates the total expenses for each category and shows whether the initial budget was met or exceeded.
-- Editing Existing Expenses: the application also provides the option to edit existing expenses, allowing users to make changes to the entered data. In fact it is possible through a while loop to allow the user to delete all the expenses and then insert the expenses again, or return to the previous step
+- Editing Existing Expenses: the application also provides the option to edit existing expenses, allowing users to make changes to the entered data. In fact it is possible through a while loop to allow the user to delete all the expenses and then insert the expenses again, or return to the previous step.
 # Usage
 To use TravelExpenseTracker, run the project's Python file. Follow the instructions displayed in the terminal to input travel information and record daily expenses.
 
