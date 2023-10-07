@@ -2,7 +2,7 @@
 TravelExpenseTracker is a Python app for managing travel expenses. Track your daily spending in categories like meals, transportation and accommodation. You will have the opportunity to correct any errors and it will inform you if you stick to your budget.
 # How does the travel expense tracker work?
 Here is an explanation of the project and its functions:
-- get_travel_info:
+- get_travel_information:
 This function obtains travel information, including the number of travel days and the total budget. The user is required to input the number of days, which will be stored in the "travel_days" variable. The user will input the available budget as the second input, which will be stored in the "total_budget" variable. The function ensures that user inputs are valid, returning the travel days and total budget as integers.
 - get_expense:
 This function gets an expense for a specific category and a specific day of the trip. It takes the expense type as the first parameter and the day's number related to that expense as the second parameter. The user will input the cost in numeric format for that specific category, which will be stored in the "expense" variable. The function handles the possibility of the user entering incorrect input. The function returns the expense for that specific category.
