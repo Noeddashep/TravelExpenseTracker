@@ -1,13 +1,13 @@
 from typing import List
 def get_travel_information() -> tuple[int, float]:
-    '''
+    """
     Acquires travel information from the user.
 
     This function obtains travel information, including the number of travel days and the total budget.
     The user is required to input the number of days, which will be stored in the "travel_days" variable.
     The user will input the available budget as the second input, which will be stored in the "total_budget" variable.
     The function ensures that user inputs are valid, returning the travel days and total budget as integers.
-    '''
+    """
 
 
     travel_days: str = input('Enter the total number of days for the trip:\n')
@@ -33,12 +33,12 @@ def get_travel_information() -> tuple[int, float]:
     return travel_days, total_budget
 
 def get_expense(day: int, kind_of_expense: str) -> float:
-    '''
+    """
     This function gets an expense for a certain category and a specific day of the trip.
     It takes the number of the day relating to the expense as the first parameter and the type of expense as the second parameter.
     The user will enter the cost in numerical format which will be stored in the "expense" variable.
     The function handles the possibility of the user entering incorrect inputs and returns the expense for that specific category.
-    '''
+    """
 
     expense: str = input(f'Enter {kind_of_expense} expenses in $ for day {day}: ')
     expense = expense.replace(',', '.')
@@ -54,12 +54,12 @@ def get_expense(day: int, kind_of_expense: str) -> float:
     return expense
 
 def get_cost_of_expenses(days: int) -> List[float]:
-    '''
+    """
     Registers daily expenses for the entire trip.
 
     This function, which takes the number of days as its only argument, iterates for each expense category (meal, transport, accommodation)
     for each day of the trip, adding the corresponding expenses to the list_expenses list, which will be returned at the end of the function.
-    '''
+    """
 
     list_expenses = []
 
@@ -71,14 +71,14 @@ def get_cost_of_expenses(days: int) -> List[float]:
     return list_expenses
 
 def exception_handling(list_expenses: List[float]) -> List[float]:
-    '''
+    """
     This function allows the user to correct expenses entered incorrectly.
     As long as the user enters "yes" as the first input, they can choose from 3 options by entering a number from 1 to 3:
         - If the user enters 1, they have the option to delete the expenses for the last day by re-entering expenses for meal, transport, and accommodation.
         - If the user enters 2, all entered expenses will be deleted, allowing the user to start over.
         - If the user enters 3 or another type of input, they will exit the loop.
     Ultimately, the function returns the corrected new list.
-    '''
+    """
 
     question: str = input('do you want to correct something? (yes or no)\n').lower()
     new_list: List[float] = list_expenses.copy()
@@ -110,9 +110,9 @@ def exception_handling(list_expenses: List[float]) -> List[float]:
     return new_list
 
 def add_up_all_the_expenses(expenses: List[float]) -> float:
-    '''
+    """
     This function sums all the expenses from the list provided as its only argument.
-    '''
+    """
 
     total_expenses = 0
     for expense in expenses:
@@ -120,10 +120,10 @@ def add_up_all_the_expenses(expenses: List[float]) -> float:
     return total_expenses
 
 def results_display(total_meal_expenses: float, total_transport_expenses: float, total_accomodation_expenses: float, total_expenses: int) -> str:
-    '''
+    """
     Displays a summary of travel expenses.
     Returns a table summarizing the total expenses for different categories and the overall total expenses.
-    '''
+    """
 
     return '\n'\
            'Here the summary of travel expenses:\n'\
@@ -132,8 +132,10 @@ def results_display(total_meal_expenses: float, total_transport_expenses: float,
            f'|      {total_meal_expenses}    |         {total_transport_expenses}      |      {total_accomodation_expenses}            |      {total_expenses}              |\n'
 
 def budget_check(total_budget: float, total_expenses:int) -> str:
-    #Checks if the initial budget covers all expenses
-
+    """
+    Checks if the initial budget covers all expenses
+    """
+    
     final_budget: int = total_budget - total_expenses
 
     if final_budget >= 0:
@@ -147,6 +149,7 @@ def main():
     Main function to run the travel expense management program.
     Calls various functions to obtain, manage, and display travel expenses.
     """
+    
     # Get trip information from user
     travel_day: tuple[int, float] = get_travel_information()
 
