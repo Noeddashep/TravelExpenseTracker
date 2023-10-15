@@ -14,20 +14,20 @@ def get_travel_information() -> tuple[int, float]:
     while not travel_days.isnumeric():
         print('Only numeric characters are accepted!')
         travel_days = input('Enter the total days for the trip:\n')
+        
+    travel_days = int(travel_days)
 
-    total_budget = input('Enter the total budget available in $ for the trip:\n')
-    total_budget = total_budget.replace(',', '.')
+    total_budget = input('Enter the total budget available in $ for the trip:\n').replace(',', '.')
     while True:
         try:
             total_budget = float(total_budget)
             break
         except ValueError:
             print('Only numeric characters are accepted!')
-            total_budget = input('Enter the total budget available in $ for the trip:\n')
-            total_budget = total_budget.replace(',', '.')
+            total_budget = input('Enter the total budget available in $ for the trip:\n').replace(',', '.')
 
-    travel_days = int(travel_days)
     total_budget = float(total_budget)
+    
     print(f"Great! Your trip will last {travel_days} days with an initial budget of ${total_budget:.2f}")
 
     return travel_days, total_budget
