@@ -1,5 +1,6 @@
 from typing import List
-from src.user_functions import get_expense
+from src.user_functions import get_expense, get_travel_information
+
 
 def get_cost_of_expenses(days: int) -> List[float]:
     """
@@ -45,26 +46,37 @@ def expenses_correction(list_expenses: List[float]) -> List[float]:
                         1. "delete the last day of expense";\n \
                         2. "delete all the expenses";\n \
                         3. "cancel"')
-        user_choice = int(input('Enter a number:\n'))
+        user_choice = input('Enter a number:\n')
 
-        if user_choice == 1:
+        while user_choice not in ('1', '2', '3'):
+            print('You must enter an integer value between 1 and 3!\n')
+            print('Choose from the possible options:\n \
+                                    1. "delete the last day of expense";\n \
+                                    2. "delete all the expenses";\n \
+                                    3. "cancel"')
+            user_choice = input('Enter a number:\n')
+
+        if user_choice == '1':
             print(f'Enter the correct expense for each category on the last day:')
             if new_list:
 
-        # For loop allows to delete the last three expenses from the list, which correspond to the last day of the trip
+                # For loop allows to delete the last three expenses from the list, which correspond to the last day of the trip
                 for number in range(3):
                     del new_list[-1]
+
+                new_list.extend(get_cost_of_expenses(1))
             else:
                 print("The expense list is already empty.")
 
-        elif user_choice == 2:
+        elif user_choice == '2':
+            days = get_travel_information()
             print(f'Enter the correct expense for each category:')
             new_list = []
+            new_list.extend(get_cost_of_expenses(days[0]))
 
-        elif user_choice == 3:
+        elif user_choice == '3':
             return list_expenses
 
-        new_list.extend(get_cost_of_expenses(1))
         print('\nDo you want to correct something?\n')
         question = input('Type "yes" to go to expense correction, otherwise press enter to exit:\n').lower()
 

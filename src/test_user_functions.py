@@ -8,7 +8,7 @@ class TestTravelInfo(TestCase):
 
     # Check if it returns the correct value with valid inputs
     @patch('builtins.input', side_effect=['5', '1500.8'])
-    def test_1(self, mock_input):
+    def test_valid_info(self, mock_input):
         result = get_travel_information()
         self.assertEqual(result, (5, 1500.8))
 
