@@ -1,5 +1,5 @@
 from src.user_functions import get_travel_information
-from src.manage_expenses import get_cost_of_expenses, exception_handling, sum_expenses
+from src.manage_expenses import get_cost_of_expenses, expenses_correction, sum_expenses
 from src.display_output import results_display, budget_check
 from typing import List
 
@@ -16,15 +16,15 @@ def main():
     list_expenses: List[float] = get_cost_of_expenses(travel_day[0])
 
     # Manages any exceptions or corrections in the expenses entered
-    handling_expenses: List[float] = exception_handling(list_expenses)
+    expense_correction: List[float] = expenses_correction(list_expenses)
 
     # Calculate the total expenses for meals, transportation and accommodation separately
-    total_meal_expenses: float = sum(handling_expenses[::3])  # This slice selects every third item in the list (which corresponds to each day's meal expenses)
-    total_transport_expenses: float = sum(handling_expenses[1::3])  # This slice selects every third item starting from the second item in the list (which corresponds to each day's transportation expenses).
-    total_accomodation_expenses: float = sum(handling_expenses[2::3])  # This slice selects every third item starting from the third item in the list (which corresponds to each day's accommodation expenses).
+    total_meal_expenses: float = sum(expense_correction[::3])  # This slice selects every third item in the list (which corresponds to each day's meal expenses)
+    total_transport_expenses: float = sum(expense_correction[1::3])  # This slice selects every third item starting from the second item in the list (which corresponds to each day's transportation expenses).
+    total_accomodation_expenses: float = sum(expense_correction[2::3])  # This slice selects every third item starting from the third item in the list (which corresponds to each day's accommodation expenses).
 
     # Calculate the total of the overall expenses
-    total_expenses: float = sum_expenses(handling_expenses)
+    total_expenses: float = sum_expenses(expense_correction)
 
     # View a summary of your travel expenses
     display_expenses: str = results_display(total_meal_expenses, total_transport_expenses, total_accomodation_expenses,

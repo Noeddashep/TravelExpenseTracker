@@ -11,16 +11,28 @@ def get_travel_information() -> tuple[int, float]:
     """
 
     travel_days = input('Enter the total number of days for the trip:\n')
-    while not travel_days.isnumeric():
-        print('Only numeric characters are accepted!')
-        travel_days = input('Enter the total days for the trip:\n')
-    travel_days = int(travel_days)
+    while travel_days:
+        try:
+            travel_days = int(travel_days)
+            if travel_days > 0:
+                break
+            else:
+                print('You must enter a value greater than zero!')
+                travel_days = input('Enter the total days for the trip:\n')
+        except ValueError:
+            print('Only integers are accepted!')
+            travel_days = input('Enter the total days for the trip:\n')
+
 
     total_budget = input('Enter the total budget available in $ for the trip:\n').replace(',', '.')
-    while True:
+    while total_budget:
         try:
             total_budget = float(total_budget)
-            break
+            if total_budget > 0:
+                break
+            else:
+                print('You must enter a value greater than zero!')
+                total_budget = input('Enter the total days for the trip:\n').replace(',', '.')
         except ValueError:
             print('Only numeric characters are accepted!')
             total_budget = input('Enter the total budget available in $ for the trip:\n').replace(',', '.')
@@ -43,9 +55,16 @@ def get_expense(day: int, kind_of_expense: str) -> float:
 
     expense = input(f'Enter {kind_of_expense} expenses in $ for day {day}: ').replace(',', '.')
 
-    while not expense.isnumeric():
-        print('Only numeric characters are accepted!')
-        expense = input(f'Enter {kind_of_expense} expenses in $ for day {day}: ').replace(',', '.')
-    expense = float(expense)
+    while expense:
+        try:
+            expense = float(expense)
+            if expense > 0:
+                break
+            else:
+                print('You must enter a value greater than zero!')
+                expense = input(f'Enter {kind_of_expense} expenses in $ for day {day}: ').replace(',', '.')
+        except ValueError:
+            print("Only numeric characters are accepted!")
+            expense = input(f'Enter {kind_of_expense} expenses in $ for day {day}: ').replace(',', '.')
 
     return expense

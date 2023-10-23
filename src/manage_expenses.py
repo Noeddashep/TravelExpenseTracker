@@ -20,7 +20,7 @@ def get_cost_of_expenses(days: int) -> List[float]:
     return list_expenses
 
 
-def exception_handling(list_expenses: List[float]) -> List[float]:
+def expenses_correction(list_expenses: List[float]) -> List[float]:
     """
     This function allows the user to correct expenses entered incorrectly.
 
@@ -33,9 +33,13 @@ def exception_handling(list_expenses: List[float]) -> List[float]:
 
     return: The new corrected list.
     """
-
-    question = input('do you want to correct something? (yes or no)\n').lower()
+    print('\nDo you want to correct something?\n')
+    question = input('Type "yes" to go to expense correction, otherwise press enter to exit:\n').lower()
     new_list = list_expenses.copy()
+
+    while question != 'yes' and question != '':
+        question = input('Type "yes" to go to expense correction, otherwise press enter to exit:\n').lower()
+
     while question == 'yes':
         print('Choose from the possible options:\n \
                         1. "delete the last day of expense";\n \
@@ -61,7 +65,11 @@ def exception_handling(list_expenses: List[float]) -> List[float]:
             return list_expenses
 
         new_list.extend(get_cost_of_expenses(1))
-        question = input('do you want to correct something? (yes or no)\n').lower()
+        print('\nDo you want to correct something?\n')
+        question = input('Type "yes" to go to expense correction, otherwise press enter to exit:\n').lower()
+
+        while question != 'yes' and question != '':
+            question = input('Type "yes" to go to expense correction, otherwise press enter to exit:\n').lower()
 
     return new_list
 
