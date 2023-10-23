@@ -7,14 +7,14 @@ class TestGetCostExpenses(TestCase):
 
     # Checks if it returns the correct list even by inserting invalid inputs
     @patch('builtins.input', side_effect=['0', '5', '15.8', '-2', '2.55', '12,22', '22', '13$', '13'])
-    def test_1(self, mock_input):
+    def test_ok_get_cost_expenses(self, mock_input):
         result = get_cost_of_expenses(2)
         self.assertEqual(result, [5, 15.8, 2.55, 12.22, 22, 13])
 
 
 class TestExpensesCorrection(TestCase):
 
-    # Check if return the correct list by deleting the last day of expenses
+    # Check if it returns the correct list by eliminating the expenses entered in the last day
     @patch('builtins.input', side_effect=['y', 'ye', 'ok', 'YES', '1', '20', '15', '12.5', 'no', ''])
     def test_yes_delete_last_day(self, mock_input):
 
@@ -32,7 +32,7 @@ class TestExpensesCorrection(TestCase):
         result = expenses_correction(expenses)
         self.assertEqual(result, [10, 11, 12, 13, 14, 15])
 
-    #Check if return the list uncharged
+    #Check if return the list uncharged when you want to exit the program after yes
     @patch('builtins.input', side_effect=['yes', '', 'no', '0', '3'])
     def test_yes_quit_program(self, mock_input):
 
@@ -41,7 +41,7 @@ class TestExpensesCorrection(TestCase):
         result = expenses_correction(expenses)
         self.assertEqual(result, [1, 2, 3, 4, 5, 6])
 
-    # Check if return the list uncharged
+    # #Check if return the list uncharged when you want to exit the program
     @patch('builtins.input', side_effect=['n', 'no', 'quit', '0', ''])
     def test_no_quit_program(self, mock_input):
         expenses = [1, 2, 3, 4, 5, 6]
