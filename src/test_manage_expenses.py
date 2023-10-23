@@ -14,7 +14,7 @@ class TestGetCostExpenses(TestCase):
 
 class TestExpensesCorrection(TestCase):
 
-    # Check if it returns the correct list by eliminating the expenses entered in the last day
+    # Check if it returns the correct list by eliminating the expenses entered the last day
     @patch('builtins.input', side_effect=['y', 'ye', 'ok', 'YES', '1', '20', '15', '12.5', 'no', ''])
     def test_yes_delete_last_day(self, mock_input):
 
