@@ -32,7 +32,7 @@ class TestExpensesCorrection(TestCase):
         result = expenses_correction(expenses)
         self.assertEqual(result, [10, 11, 12, 13, 14, 15])
 
-    #Check if return the list uncharged when you want to exit the program after yes
+    # Check if return the list uncharged when you want to exit the program after "yes"
     @patch('builtins.input', side_effect=['yes', '', 'no', '0', '3'])
     def test_yes_quit_program(self, mock_input):
 
@@ -41,7 +41,7 @@ class TestExpensesCorrection(TestCase):
         result = expenses_correction(expenses)
         self.assertEqual(result, [1, 2, 3, 4, 5, 6])
 
-    # #Check if return the list uncharged when you want to exit the program
+    # Check if return the list uncharged when you want to exit the program
     @patch('builtins.input', side_effect=['n', 'no', 'quit', '0', ''])
     def test_no_quit_program(self, mock_input):
         expenses = [1, 2, 3, 4, 5, 6]
