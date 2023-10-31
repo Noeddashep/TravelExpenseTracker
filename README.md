@@ -4,18 +4,7 @@ TravelExpenseTracker is a Python app developed for educational purposes by a Tom
 Track your daily expenses in categories such as meals, transportation and accommodation. You will have the opportunity to correct any errors and it will inform you if you stick to your budget.
 
 # Program Execution
-The program is executed by the main function, which coordinates the execution of various functions. To run the program, make sure Python is installed on your system and follow these steps to clone the repository and launch the application:
-1. Open your terminal or command prompt.
-2. Navigate to the directory where you want to clone the repository.
-3. Run the following command to clone the repository from its URL:
-```sh
-git clone https://github.com/Noeddashep/TravelExpenseTracker.git
-```
-Then go to the project directory with the following command:
-```sh
-cd TravelExpenseTracker
-```
-Start the program by running the following command:
+The program is executed by the main function, which coordinates the execution of various functions. To run the program, make sure Python is installed on your system, clone the repository and launch the application by running the following command:
 ```sh
 python main.py
 ```
