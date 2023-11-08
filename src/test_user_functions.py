@@ -51,7 +51,6 @@ class TestGetExpense(TestCase):
         self.assertEqual(result, 50.5)
 
 
-
 if __name__ == '__main__':
     unittest.main()
 
