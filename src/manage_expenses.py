@@ -25,7 +25,7 @@ def get_cost_of_expenses(days: int, budget: float) -> List[float]:
     return list_expenses
 
 
-def expenses_correction(list_expenses: List[float], budget: float) -> List[float]:
+def expenses_correction(list_expenses: List[float], initial_budget: float) -> List[float]:
     """
     This function allows the user to correct expenses entered incorrectly.
 
@@ -35,7 +35,7 @@ def expenses_correction(list_expenses: List[float], budget: float) -> List[float
         - If the user enters 3 or another type of input, they will exit the loop.
 
     param list_expenses: A list containing the various expenses in the categories of meals, transport and accommodation.
-    param budget: The user's initial budget
+    param initial_budget: The user's initial budget
 
     return: The new corrected list.
     """
@@ -69,7 +69,7 @@ def expenses_correction(list_expenses: List[float], budget: float) -> List[float
                 for number in range(3):
                     del new_list[-1]
 
-                new_list.extend(get_cost_of_expenses(1, budget))
+                new_list.extend(get_cost_of_expenses(1, initial_budget))
             else:
                 print("The expense list is already empty.")
 
