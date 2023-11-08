@@ -2,11 +2,12 @@ from typing import List
 from src.user_functions import get_expense, get_travel_information
 
 
-def get_cost_of_expenses(days: int) -> List[float]:
+def get_cost_of_expenses(days: int, budget: float) -> List[float]:
     """
     Registers daily expenses for the entire trip.
 
     param days: The number of days relating to the trip
+    param budget: The user's initial budget
 
     return: A list containing the various expenses in the categories of meals, transport and accommodation.
     """
@@ -17,11 +18,14 @@ def get_cost_of_expenses(days: int) -> List[float]:
         list_expenses.append(get_expense(day, 'meal'))
         list_expenses.append(get_expense(day, 'transport'))
         list_expenses.append(get_expense(day, 'accommodation'))
+        if sum(list_expenses) >= budget:
+            print("Your budget won't cover your expenses!")
+            break
 
     return list_expenses
 
 
-def expenses_correction(list_expenses: List[float]) -> List[float]:
+def expenses_correction(list_expenses: List[float], budget: float) -> List[float]:
     """
     This function allows the user to correct expenses entered incorrectly.
 
@@ -31,6 +35,7 @@ def expenses_correction(list_expenses: List[float]) -> List[float]:
         - If the user enters 3 or another type of input, they will exit the loop.
 
     param list_expenses: A list containing the various expenses in the categories of meals, transport and accommodation.
+    param budget: The user's initial budget
 
     return: The new corrected list.
     """
@@ -64,15 +69,15 @@ def expenses_correction(list_expenses: List[float]) -> List[float]:
                 for number in range(3):
                     del new_list[-1]
 
-                new_list.extend(get_cost_of_expenses(1))
+                new_list.extend(get_cost_of_expenses(1, budget))
             else:
                 print("The expense list is already empty.")
 
         elif user_choice == '2':
-            days = get_travel_information()
+            days, budget = get_travel_information()
             print(f'Enter the correct expense for each category:')
             new_list = []
-            new_list.extend(get_cost_of_expenses(days[0]))
+            new_list.extend(get_cost_of_expenses(days, budget))
 
         elif user_choice == '3':
             return list_expenses

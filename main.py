@@ -13,10 +13,10 @@ def main():
     travel_day: tuple[int, float] = get_travel_information()
 
     # Record expenses for meals, transportation and accommodations for each day of the trip
-    list_expenses: List[float] = get_cost_of_expenses(travel_day[0])
+    list_expenses: List[float] = get_cost_of_expenses(travel_day[0], travel_day[1])
 
     # Manages any exceptions or corrections in the expenses entered
-    expense_correction: List[float] = expenses_correction(list_expenses)
+    expense_correction: List[float] = expenses_correction(list_expenses, travel_day[1])
 
     # Calculate the total expenses for meals, transportation and accommodation separately
     total_meal_expenses: float = sum(expense_correction[::3])  # This slice selects every third item in the list (which corresponds to each day's meal expenses)
