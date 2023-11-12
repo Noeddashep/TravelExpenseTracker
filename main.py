@@ -1,6 +1,7 @@
 from src.user_functions import get_travel_information
 from src.manage_expenses import get_cost_of_expenses, expenses_correction, sum_expenses
-from src.display_output import results_display, budget_check
+from src.display_output import results_display
+from src.budget_check import budget_check
 from typing import List
 
 def main():

@@ -5,11 +5,23 @@ from unittest.mock import patch
 
 class TestGetCostExpenses(TestCase):
 
-    # Checks if it returns the correct list even by inserting invalid inputs
+    # Check if it returns the correct list even by inserting invalid inputs
     @patch('builtins.input', side_effect=['0', '5', '15.8', '-2', '2.55', '12,22', '22', '13$', '13'])
-    def test_1(self, mock_input):
-        result = get_cost_of_expenses(2, 50)
+    def test_valid_list(self, mock_input):
+        result = get_cost_of_expenses(2, 500)
         self.assertEqual(result, [5, 15.8, 2.55, 12.22, 22, 13])
+
+    # Check if it returns an empty list if the number of days is 0
+    @patch('builtins.input', side_effect=['0', '5', '15.8', '-2', '2.55', '12,22', '22', '13$', '13'])
+    def test_no_day(self, mock_input):
+        result = get_cost_of_expenses(0, 500)
+        self.assertEqual(result, [])
+
+    # Checks if it returns a list that stays within budget if the inputs entered are greater than budget
+    @patch('builtins.input', side_effect=['0', '5', '15.8', '-2', '2.55', '12,22', '22', '13$', '13'])
+    def test_limited_budget(self, mock_input):
+        result = get_cost_of_expenses(2, 30)
+        self.assertEqual(result, [5, 15.8, 2.55])
 
 
 class TestExpensesCorrection(TestCase):
@@ -20,7 +32,7 @@ class TestExpensesCorrection(TestCase):
 
         expenses = [10, 11, 12, 13, 14, 15]
 
-        result = expenses_correction(expenses, 50)
+        result = expenses_correction(expenses, 500)
         self.assertEqual(result, [10, 11, 12, 20, 15, 12.5])
 
     # Check if return the correct list by deleting all the expenses
@@ -29,24 +41,24 @@ class TestExpensesCorrection(TestCase):
 
         expenses = [10, 11, 12, 20, 15, 12.5]
 
-        result = expenses_correction(expenses, 50)
+        result = expenses_correction(expenses, 500)
         self.assertEqual(result, [10, 11, 12, 13, 14, 15])
 
     #Check if return the list uncharged
     @patch('builtins.input', side_effect=['yes', '', 'no', '0', '3'])
     def test_yes_quit_program(self, mock_input):
 
-        expenses = [1, 2, 3, 4, 5, 6]
+        expenses = []
 
-        result = expenses_correction(expenses, 50)
-        self.assertEqual(result, [1, 2, 3, 4, 5, 6])
+        result = expenses_correction(expenses, 500)
+        self.assertEqual(result, [])
 
     # Check if return the list uncharged
     @patch('builtins.input', side_effect=['n', 'no', 'quit', '0', ''])
     def test_no_quit_program(self, mock_input):
         expenses = [1, 2, 3, 4, 5, 6]
 
-        result = expenses_correction(expenses, 50)
+        result = expenses_correction(expenses, 500)
         self.assertEqual(result, [1, 2, 3, 4, 5, 6])
 
 

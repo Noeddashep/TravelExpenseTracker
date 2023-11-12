@@ -16,10 +16,19 @@ def get_cost_of_expenses(days: int, budget: float) -> List[float]:
 
     for day in range(1, days + 1):
         list_expenses.append(get_expense(day, 'meal'))
-        list_expenses.append(get_expense(day, 'transport'))
-        list_expenses.append(get_expense(day, 'accommodation'))
-        if sum(list_expenses) >= budget:
+        if sum(list_expenses) > budget:
             print("Your budget won't cover your expenses!")
+            list_expenses.pop()
+            break
+        list_expenses.append(get_expense(day, 'transport'))
+        if sum(list_expenses) > budget:
+            print("Your budget won't cover your expenses!")
+            list_expenses.pop()
+            break
+        list_expenses.append(get_expense(day, 'accommodation'))
+        if sum(list_expenses) > budget:
+            print("Your budget won't cover your expenses!")
+            list_expenses.pop()
             break
 
     return list_expenses
