@@ -4,6 +4,10 @@ TravelExpenseTracker is a Python app developed for educational purposes by a Tom
 Track your daily expenses in categories such as meals, transportation and accommodation. You will have the opportunity to correct any errors and it will inform you if you stick to your budget.
 
 # Program Execution
+Make sure you install the necessary dependencies that will make the project work properly. Use the following terminal command:
+```sh
+pip install -r src\requirements.txt
+```
 The program is executed by the main function, which coordinates the execution of various functions. To run the program, make sure Python is installed on your system application, clone the repository and launch the application using the command:
 
 ```sh
